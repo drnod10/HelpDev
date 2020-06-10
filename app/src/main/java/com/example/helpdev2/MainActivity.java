@@ -29,11 +29,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-        btcancelar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity.finish();
-            }
-        });
+
     }
 }
