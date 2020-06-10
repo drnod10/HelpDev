@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HelpDev2</string>
+    <string name="help_dev_login">Help Dev Login</string>
+    <string name="help_dev_cadastro">Help Dev Cadastro</string>
 </resources>
