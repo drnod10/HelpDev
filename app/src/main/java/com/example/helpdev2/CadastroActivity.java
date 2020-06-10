@@ -1,5 +1,6 @@
 package com.example.helpdev2;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -22,6 +23,7 @@ public class CadastroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
 
         btcancelar = findViewById(R.id.btcancelar);
+        btcadastrar = findViewById(R.id.btcadastrar);
         ednome = (EditText) findViewById(R.id.nome);
         edapelido = (EditText) findViewById(R.id.apelido);
         edemail = (EditText) findViewById(R.id.email);
@@ -30,7 +32,7 @@ public class CadastroActivity extends AppCompatActivity {
         try {
             db = openOrCreateDatabase("banco_dados", Context.MODE_PRIVATE, null);
         } catch (Exception e) {
-        //mensagem de erro
+            System.out.println(e.toString());
         }
 
         btcadastrar.setOnClickListener(new View.OnClickListener() {
@@ -42,7 +44,11 @@ public class CadastroActivity extends AppCompatActivity {
                 String senha = edsenha.getText().toString();
                 try {
                     db.execSQL("insert into usuarios(nome, apelido, email, senha) values ('nome', 'apelido', 'email', 'senha')");
-                    System.out.println("Dados Cadastrados Com Sucesso!");
+                    AlertDialog.Builder dialogo = new AlertDialog.Builder(CadastroActivity.this);
+                    dialogo.setTitle("Aviso");
+                    dialogo.setMessage("Usuario Cadastrado com Sucesso !")
+                            .setNeutralButton("OK",null)
+                            .show();
                 } catch (Exception e) {
                     System.out.println("Erro ao Cadastrar Dados!");
                 }

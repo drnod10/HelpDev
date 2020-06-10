@@ -11,8 +11,10 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    private Activity getActivity;
-    Button btlogar, btcadastar, btcancelar;
+
+    //private Activity getActivity;
+
+    Button btlogar, btcadastrar, btcancelar;
     SQLiteDatabase db;
 
     @Override
@@ -20,7 +22,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        btlogar = findViewById(R.id.btlogar);
+        btcadastrar = findViewById(R.id.btcadastrar);
+
+
         try{
+
             db = openOrCreateDatabase("banco_dados",
                     Context.MODE_PRIVATE, null);
             db.execSQL("create table if not exists "+
@@ -28,22 +35,22 @@ public class MainActivity extends AppCompatActivity {
                     "autoincrement, nome text not null, apelido text " +
                     "not null, " + "email text not null," + "senha text not null)");
             System.out.println("Banco de Dados Criado com Sucesso!");
+
+
+
         } catch (Exception e) {
             System.out.println("Erro ao Criar Banco de Dados!");
         }
 
-        btlogar = findViewById(R.id.btlogar);
-        btcadastar = findViewById(R.id.btcadastrar);
-        btcancelar = findViewById(R.id.btcancelar);
-
-        btcadastar.setOnClickListener(new View.OnClickListener() {
+        btcadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, CadastroActivity.class);
                 startActivity(intent);
             }
-
         });
+
+
 
     }
 }
