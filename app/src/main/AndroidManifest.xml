@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TelaInicialActivity"></activity>
+        <activity
+            android:name=".TelaInicialActivity"
+            android:label="@string/title_activity_tela_inicial"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".CadastroActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

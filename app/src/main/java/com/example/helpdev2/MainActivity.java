@@ -50,6 +50,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btlogar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TelaInicialActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
     }

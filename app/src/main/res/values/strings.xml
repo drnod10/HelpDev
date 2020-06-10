@@ -15,4 +15,6 @@
     <string name="menu_slideshow">Slideshow</string>
 
     <string name="home_second">Home Second</string>
+    <string name="tab_text_1">Noticias</string>
+    <string name="tab_text_2">Correção de Codigo</string>
 </resources>
