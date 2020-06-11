@@ -65,7 +65,10 @@ public class PerfilActivity extends AppCompatActivity {
                         AlertDialog.Builder dialogo = new AlertDialog.Builder(PerfilActivity.this);
                         dialogo.setTitle("Aviso");
                         dialogo.setMessage("Deseja Excluir Sua Conta?")
-                                .setPositiveButton("Sim",null)
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                    db.execSQL("delete from usuarios where id = "+codigo+"");
+                                    }})
                                 .setNegativeButton("Não",null)
                                 .show();
                     }
@@ -81,7 +84,7 @@ public class PerfilActivity extends AppCompatActivity {
                         }catch(Exception e){
                             AlertDialog.Builder dialogo = new AlertDialog.Builder(PerfilActivity.this);
                             dialogo.setTitle("Aviso");
-                            dialogo.setMessage("Eroor !")
+                            dialogo.setMessage("Erro !")
                                     .setNeutralButton("OK",null)
                                     .show();
                         }
@@ -107,7 +110,7 @@ public class PerfilActivity extends AppCompatActivity {
                         }catch(Exception e){
                             AlertDialog.Builder dialogo = new AlertDialog.Builder(PerfilActivity.this);
                             dialogo.setTitle("Aviso");
-                            dialogo.setMessage("Eroor !")
+                            dialogo.setMessage("Erro !")
                                     .setNeutralButton("OK",null)
                                     .show();
                         }
