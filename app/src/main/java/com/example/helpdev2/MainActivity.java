@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         btlogar = findViewById(R.id.btlogar);
         btcadastrar = findViewById(R.id.btcadastro);
+
         edlogin = findViewById(R.id.edlogin);
         edsenha = findViewById(R.id.edsenha);
 
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
             btcadastrar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -56,33 +58,23 @@ public class MainActivity extends AppCompatActivity {
             btlogar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, TelaInicialActivity.class);
-                    startActivity(intent);
-                    /*
 
-                    c = db.query("usuarios",new String[]{"apelido","senha"},
-                            null,null,null,null,null);
-                    db.rawQuery("select apelido,senha from usuarios where apelido = "+edlogin.toString()+ ",senha ="+edsenha.toString()+" ",null);
+                    final String lg = edlogin.getText().toString();
+                    final String pass = edsenha.getText().toString();
+
+                    c = db.rawQuery("select * from usuarios where apelido=? AND senha=?", new String[]{lg , pass});
+
                     if(c.getCount() > 0) {
-                        c.moveToFirst();
-                        String apelido = c.getString(0);
-                        String senha = c.getString(1);
-                        if(apelido == edlogin.toString() && senha == edsenha.toString()) {
-
-                        }
-
-
+                        Intent intent = new Intent(MainActivity.this, TelaInicialActivity.class);
+                        startActivity(intent);
 
                     }else {
-                        AlertDialog.Builder dialogo = new AlertDialog.Builder(MainActivity.this);
-                        dialogo.setTitle("Aviso");
-                        dialogo.setMessage("Usuário ou Senha Inválidos !")
-                                .setNeutralButton("OK",null)
-                                .show();
-                    }
-
-*/
-
+                            AlertDialog.Builder dialogo = new AlertDialog.Builder(MainActivity.this);
+                            dialogo.setTitle("Aviso");
+                            dialogo.setMessage("Usuário ou Senha Inválidos !")
+                                    .setNeutralButton("OK",null)
+                                    .show();
+                        }
 
                 }
             });
