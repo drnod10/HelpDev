@@ -33,7 +33,7 @@ public class PerfilActivity extends AppCompatActivity {
         btcancelar = findViewById(R.id.btcancelarperfil);
         btdeletar = findViewById(R.id.btdeletar);
         btatualizar = findViewById(R.id.btcadastro);
-        final DialogInterface.OnClickListener AtualizarUsuario,encerrapagina;
+        final DialogInterface.OnClickListener AtualizarUsuario,encerrapagina,encerradeletar,DeletarUsuario;
 
         final Cliente c = getIntent().getExtras().getParcelable("cliente");
         final Integer codigo = c.getCodigo();
@@ -59,22 +59,59 @@ public class PerfilActivity extends AppCompatActivity {
                     }
                 });
 
+                encerradeletar = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        try{
+                            Intent intent = new Intent(PerfilActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        }catch(Exception e){
+                            AlertDialog.Builder dialogo = new AlertDialog.Builder(PerfilActivity.this);
+                            dialogo.setTitle("Aviso");
+                            dialogo.setMessage("Erro !")
+                                    .setNeutralButton("OK",null)
+                                    .show();
+                        }
+                    }
+                };
+
+                DeletarUsuario = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        try{
+                            String nom = nome.getText().toString();
+                            String apel = apelido.getText().toString();
+                            String em = email.getText().toString();
+                            String tel = telefone.getText().toString();
+
+                            db.execSQL("delete from usuarios where id ="+codigo);
+                            AlertDialog.Builder confirmado = new AlertDialog.Builder(PerfilActivity.this);
+                            confirmado.setTitle("Aviso");
+                            confirmado.setMessage("Usuário Excluído com Sucesso.").
+                                    setNeutralButton("Ok",encerradeletar)
+                                .show();
+                        }catch(Exception e){
+                            AlertDialog.Builder dialogo = new AlertDialog.Builder(PerfilActivity.this);
+                            dialogo.setTitle("Aviso");
+                            dialogo.setMessage("Erro !")
+                                    .setNeutralButton("OK",null)
+                                    .show();
+                        }
+                    }
+                };
+
                 btdeletar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         AlertDialog.Builder dialogo = new AlertDialog.Builder(PerfilActivity.this);
                         dialogo.setTitle("Aviso");
                         dialogo.setMessage("Deseja Excluir Sua Conta?")
-                                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                    db.execSQL("delete from usuarios where id ="+codigo);
-
-                                    }})
-                                .setNegativeButton("Não",null)
+                                .setPositiveButton("Sim", DeletarUsuario)
+                            .setNegativeButton("Não",null)
                                 .show();
-                    }
-
-                });
+                }});
 
                 encerrapagina = new DialogInterface.OnClickListener() {
                     @Override
