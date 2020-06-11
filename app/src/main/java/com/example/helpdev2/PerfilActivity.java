@@ -24,8 +24,8 @@ public class PerfilActivity extends AppCompatActivity {
 
         try {
             db = openOrCreateDatabase("banco_dados", Context.MODE_PRIVATE,null);
-            c = db.query("usuarios",new String[]{"nome","apelido","email","telefone"},
-                    null,null,null,null,null);
+            Cursor res = db.rawQuery("select nome,apelido,email,telefone from usuarios WHERE id = '1'", null);
+            res.moveToFirst();
                 nome.setText(c.getString(0));
                 apelido.setText(c.getString(1));
                 email.setText(c.getString(2));
