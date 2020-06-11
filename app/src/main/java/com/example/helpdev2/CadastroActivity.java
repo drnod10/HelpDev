@@ -22,7 +22,7 @@ public class CadastroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
 
         btcancelar = findViewById(R.id.btcancelarperfil);
-        btcadastrar = findViewById(R.id.btatualizarperfil);
+        btcadastrar = findViewById(R.id.btcadastro);
         ednome = (EditText) findViewById(R.id.nomeperfil);
         edapelido = (EditText) findViewById(R.id.apelidoperfil);
         edemail = (EditText) findViewById(R.id.emailperfil);
