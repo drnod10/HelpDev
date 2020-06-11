@@ -36,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
                     "not null, " + "email text not null," + "senha text not null)");
             System.out.println("Banco de Dados Criado com Sucesso!");
 
-
-
         } catch (Exception e) {
             System.out.println("Erro ao Criar Banco de Dados!");
         }
