@@ -26,7 +26,7 @@ public class CadastroActivity extends AppCompatActivity {
         ednome = (EditText) findViewById(R.id.nomeperfil);
         edapelido = (EditText) findViewById(R.id.apelidoperfil);
         edemail = (EditText) findViewById(R.id.emailperfil);
-        edsenha = (EditText) findViewById(R.id.senhaperfil);
+        edsenha = (EditText) findViewById(R.id.edtelefone);
 
         try {
             db = openOrCreateDatabase("banco_dados", Context.MODE_PRIVATE, null);

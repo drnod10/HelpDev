@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     EditText edlogin, edsenha;
 
     SQLiteDatabase db;
+    Cursor c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
             db = openOrCreateDatabase("banco_dados",
                     Context.MODE_PRIVATE, null);
             db.execSQL("create table if not exists "+
-                    "usuarios(numreg integer primary key " +
+                    "usuarios(id integer primary key " +
                     "autoincrement, nome text not null, apelido text " +
-                    "not null, " + "email text not null," + "senha text not null)");
+                    "not null, " + "email text not null," + "telefone text not null," + "senha text not null)");
             System.out.println("Banco de Dados Criado com Sucesso!");
 
 
@@ -55,6 +57,11 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(MainActivity.this, TelaInicialActivity.class);
                     startActivity(intent);
+                    c = db.query("usuarios",new String[]{"apelido","senha"},
+                            null,null,null,null,null);
+
+
+
 
                 }
             });
