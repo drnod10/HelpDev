@@ -42,7 +42,7 @@ public class CadastroActivity extends AppCompatActivity {
                 String email = edemail.getText().toString();
                 String senha = edsenha.getText().toString();
                 try {
-                    db.execSQL("insert into usuarios(nome, apelido, email, senha) values ('nome', 'apelido', 'email', 'senha')");
+                    db.execSQL("insert into usuarios(nome, apelido, email, senha) values ('nome', 'apelido', 'email', 'senha','telefone')");
                     AlertDialog.Builder dialogo = new AlertDialog.Builder(CadastroActivity.this);
                     dialogo.setTitle("Aviso");
                     dialogo.setMessage("Usuario Cadastrado com Sucesso !")
