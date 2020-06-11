@@ -3,7 +3,6 @@ package com.example.helpdev2;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -22,12 +21,12 @@ public class CadastroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
-        btcancelar = findViewById(R.id.btcancelar);
-        btcadastrar = findViewById(R.id.btcadastrar);
-        ednome = (EditText) findViewById(R.id.nome);
-        edapelido = (EditText) findViewById(R.id.apelido);
-        edemail = (EditText) findViewById(R.id.email);
-        edsenha = (EditText) findViewById(R.id.senha);
+        btcancelar = findViewById(R.id.btcancelarperfil);
+        btcadastrar = findViewById(R.id.btatualizarperfil);
+        ednome = (EditText) findViewById(R.id.nomeperfil);
+        edapelido = (EditText) findViewById(R.id.apelidoperfil);
+        edemail = (EditText) findViewById(R.id.emailperfil);
+        edsenha = (EditText) findViewById(R.id.senhaperfil);
 
         try {
             db = openOrCreateDatabase("banco_dados", Context.MODE_PRIVATE, null);
