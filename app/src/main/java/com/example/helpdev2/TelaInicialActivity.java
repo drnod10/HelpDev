@@ -41,8 +41,21 @@ public class TelaInicialActivity extends AppCompatActivity {
         btperfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TelaInicialActivity.this, PerfilActivity.class);
-                startActivity(intent);
+
+                Cliente c = getIntent().getExtras().getParcelable("cliente");
+
+                Integer cd = c.getCodigo();
+
+                Cliente cliente = new Cliente(cd);
+
+                System.out.println(cd);
+
+                Intent it = new Intent(TelaInicialActivity.this, PerfilActivity.class);
+
+                it.putExtra("cliente", cliente);
+
+                startActivity(it);
+
             }
         });
 

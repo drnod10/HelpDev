@@ -62,11 +62,27 @@ public class MainActivity extends AppCompatActivity {
                     final String lg = edlogin.getText().toString();
                     final String pass = edsenha.getText().toString();
 
+
+
+
                     c = db.rawQuery("select * from usuarios where apelido=? AND senha=?", new String[]{lg , pass});
 
                     if(c.getCount() > 0) {
-                        Intent intent = new Intent(MainActivity.this, TelaInicialActivity.class);
-                        startActivity(intent);
+
+                        c.moveToFirst();
+
+                        int cod = c.getInt(0);
+
+                        Cliente cliente = new Cliente(cod);
+
+                        System.out.println(cod);
+
+                        Intent it = new Intent(MainActivity.this, TelaInicialActivity.class);
+
+                        it.putExtra("cliente", cliente);
+
+                        startActivity(it);
+
 
                     }else {
                             AlertDialog.Builder dialogo = new AlertDialog.Builder(MainActivity.this);
