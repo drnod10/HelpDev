@@ -1,5 +1,6 @@
 package com.example.helpdev2;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -13,7 +14,7 @@ import android.widget.EditText;
 public class PerfilActivity extends AppCompatActivity {
 
     EditText nome,apelido,email,telefone;
-    Button btcancelar;
+    Button btcancelar,btdeletar;
     SQLiteDatabase db;
     Cursor c;
 
@@ -35,6 +36,7 @@ public class PerfilActivity extends AppCompatActivity {
             }
 
         btcancelar = findViewById(R.id.btcancelarperfil);
+        btdeletar = findViewById(R.id.btdeletar);
 
         nome = findViewById(R.id.nomeperfil);
         apelido = findViewById(R.id.apelidoperfil);
@@ -46,6 +48,18 @@ public class PerfilActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        btdeletar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder dialogo = new AlertDialog.Builder(PerfilActivity.this);
+                dialogo.setTitle("Aviso");
+                dialogo.setMessage("Deseja Excluir Sua Conta?")
+                        .setPositiveButton("Sim",null)
+                        .setNegativeButton("Não",null)
+                        .show();
             }
         });
 
