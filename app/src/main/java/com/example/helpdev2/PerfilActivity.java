@@ -65,9 +65,10 @@ public class PerfilActivity extends AppCompatActivity {
                         AlertDialog.Builder dialogo = new AlertDialog.Builder(PerfilActivity.this);
                         dialogo.setTitle("Aviso");
                         dialogo.setMessage("Deseja Excluir Sua Conta?")
-                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
-                                    db.execSQL("delete from usuarios where id = "+codigo+"");
+                                    db.execSQL("delete from usuarios where id ="+codigo);
+
                                     }})
                                 .setNegativeButton("Não",null)
                                 .show();
