@@ -167,7 +167,7 @@
         android:layout_marginTop="16dp"
         android:text="Cancelar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.746"
+        app:layout_constraintHorizontal_bias="0.736"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edsenha2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,7 @@ import android.widget.EditText;
 public class CadastroActivity extends AppCompatActivity {
 
     Button btcadastrar, btcancelar;
-    EditText ednome,edapelido,edemail,edsenha;
+    EditText ednome,edapelido,edemail,edsenha,edsenha2,edtelefone;
     SQLiteDatabase db;
 
     @Override
@@ -26,7 +26,9 @@ public class CadastroActivity extends AppCompatActivity {
         ednome = (EditText) findViewById(R.id.nomeperfil);
         edapelido = (EditText) findViewById(R.id.apelidoperfil);
         edemail = (EditText) findViewById(R.id.emailperfil);
-        edsenha = (EditText) findViewById(R.id.edtelefone);
+        edsenha = (EditText) findViewById(R.id.edsenha);
+        edtelefone = findViewById(R.id.edtelefone);
+        edsenha2 = findViewById(R.id.edsenha2);
 
         try {
             db = openOrCreateDatabase("banco_dados", Context.MODE_PRIVATE, null);
@@ -41,8 +43,9 @@ public class CadastroActivity extends AppCompatActivity {
                 String apelido = edapelido.getText().toString();
                 String email = edemail.getText().toString();
                 String senha = edsenha.getText().toString();
+                String telefone = edtelefone.getText().toString();
                 try {
-                    db.execSQL("insert into usuarios(nome, apelido, email, senha) values ('nome', 'apelido', 'email', 'senha','telefone')");
+                    db.execSQL("insert into usuarios(nome, apelido, email, telefone,senha) values ('"+nome+"','"+apelido+"','"+email+"','"+telefone+"','"+senha+"')");
                     AlertDialog.Builder dialogo = new AlertDialog.Builder(CadastroActivity.this);
                     dialogo.setTitle("Aviso");
                     dialogo.setMessage("Usuario Cadastrado com Sucesso !")

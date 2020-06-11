@@ -1,5 +1,6 @@
 package com.example.helpdev2;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -57,10 +58,30 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(MainActivity.this, TelaInicialActivity.class);
                     startActivity(intent);
+                    /*
+
                     c = db.query("usuarios",new String[]{"apelido","senha"},
                             null,null,null,null,null);
+                    db.rawQuery("select apelido,senha from usuarios where apelido = "+edlogin.toString()+ ",senha ="+edsenha.toString()+" ",null);
+                    if(c.getCount() > 0) {
+                        c.moveToFirst();
+                        String apelido = c.getString(0);
+                        String senha = c.getString(1);
+                        if(apelido == edlogin.toString() && senha == edsenha.toString()) {
+
+                        }
 
 
+
+                    }else {
+                        AlertDialog.Builder dialogo = new AlertDialog.Builder(MainActivity.this);
+                        dialogo.setTitle("Aviso");
+                        dialogo.setMessage("Usuário ou Senha Inválidos !")
+                                .setNeutralButton("OK",null)
+                                .show();
+                    }
+
+*/
 
 
                 }
