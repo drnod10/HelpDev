@@ -26,8 +26,9 @@ public class PostarDuvidaActivity extends AppCompatActivity {
         txttitulo = findViewById(R.id.tituloduvida);
         txttext = findViewById(R.id.textoduvida);
 
-        final String titulo = txttitulo.getText().toString();
-        final String texto = txttext.getText().toString();
+        final Cliente c = getIntent().getExtras().getParcelable("cliente");
+
+
 
         try {
 
@@ -35,25 +36,32 @@ public class PostarDuvidaActivity extends AppCompatActivity {
             db.execSQL("create table if not exists " +
                     "postagem(id integer primary key " +
                     "autoincrement, titulo text not null, texto text " +
-                    "not null)");
+                    "not null, id_user integer not null)");
             System.out.println("Banco de Dados Criado com Sucesso!");
+
+
 
             btpostar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    System.out.println("clicou");
-                    db.execSQL("insert into postagem(titulo, texto) values ('"+titulo+"','"+texto+"')");
+                    String titulo = txttitulo.getText().toString();
+                    String texto = txttext.getText().toString();
+                    int id_user = c.getCodigo();
+
+                    System.out.println(titulo);
+                    System.out.println(texto);
+                    db.execSQL("insert into postagem(titulo, texto,id_user) values ('"+titulo+"','"+texto+"','"+id_user+"')");
                     AlertDialog.Builder dialogo = new AlertDialog.Builder(PostarDuvidaActivity.this);
                     dialogo.setTitle("Aviso");
                     dialogo.setMessage("Dúvida Postada com Sucesso !")
                             .setNeutralButton("OK",null)
                             .show();
-
                 }
             });
             btcancelar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //db.execSQL("DROP TABLE postagem");
                     finish();
                 }
             });

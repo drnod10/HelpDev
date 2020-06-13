@@ -23,6 +23,7 @@ public class CodigoActivity extends AppCompatActivity {
         gerais = findViewById(R.id.duvidasgerais);
         pessoais = findViewById(R.id.duvidaspessoais);
         nova = findViewById(R.id.novaduvida);
+        final Cliente c = getIntent().getExtras().getParcelable("cliente");
 
         btvoltar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,24 +35,57 @@ public class CodigoActivity extends AppCompatActivity {
         gerais.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CodigoActivity.this, DuvidasGeraisActivity.class);
-                startActivity(intent);
+                Cliente c = getIntent().getExtras().getParcelable("cliente");
+
+                Integer cd = c.getCodigo();
+
+                Cliente cliente = new Cliente(cd);
+
+                System.out.println(cd);
+
+                Intent it = new Intent(CodigoActivity.this, DuvidasGeraisActivity.class);
+
+                it.putExtra("cliente", cliente);
+
+                startActivity(it);
             }
         });
 
         pessoais.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CodigoActivity.this, DuvidasPessoaisActivity.class);
-                startActivity(intent);
+                Cliente c = getIntent().getExtras().getParcelable("cliente");
+
+                Integer cd = c.getCodigo();
+
+                Cliente cliente = new Cliente(cd);
+
+                System.out.println(cd);
+
+                Intent it = new Intent(CodigoActivity.this, DuvidasPessoaisActivity.class);
+
+                it.putExtra("cliente", cliente);
+
+                startActivity(it);
             }
         });
 
         nova.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CodigoActivity.this, PostarDuvidaActivity.class);
-                startActivity(intent);
+                Cliente c = getIntent().getExtras().getParcelable("cliente");
+
+                Integer cd = c.getCodigo();
+
+                Cliente cliente = new Cliente(cd);
+
+                System.out.println(cd);
+
+                Intent it = new Intent(CodigoActivity.this, PostarDuvidaActivity.class);
+
+                it.putExtra("cliente", cliente);
+
+                startActivity(it);
             }
         });
     }
