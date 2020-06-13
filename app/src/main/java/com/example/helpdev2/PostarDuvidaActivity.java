@@ -3,6 +3,7 @@ package com.example.helpdev2;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -30,6 +31,7 @@ public class PostarDuvidaActivity extends AppCompatActivity {
 
         try {
 
+            db = openOrCreateDatabase("banco_dados", Context.MODE_PRIVATE, null);
             db.execSQL("create table if not exists " +
                     "postagem(id integer primary key " +
                     "autoincrement, titulo text not null, texto text " +
@@ -55,8 +57,11 @@ public class PostarDuvidaActivity extends AppCompatActivity {
                     finish();
                 }
             });
+
         } catch (Exception e) {
+
             System.out.println("Erro ao Cadastrar Dados!");
+
         }
 
 
