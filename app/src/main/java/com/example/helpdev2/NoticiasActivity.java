@@ -1,6 +1,5 @@
 package com.example.helpdev2;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -11,8 +10,6 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import java.sql.SQLOutput;
 
 public class NoticiasActivity extends AppCompatActivity {
 
@@ -26,11 +23,11 @@ public class NoticiasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_noticias);
 
-        btvoltar = findViewById(R.id.btvoltar);
-        btant = findViewById(R.id.btanterior);
-        btprox = findViewById(R.id.btproximo);
-        titulo = findViewById(R.id.titulonoticia);
-        texto = findViewById(R.id.textonoticia);
+        btvoltar = findViewById(R.id.btvoltarpessoais);
+        btant = findViewById(R.id.btanteriorpessoais);
+        btprox = findViewById(R.id.btproximopessoais);
+        titulo = findViewById(R.id.titulopessoais);
+        texto = findViewById(R.id.textopessoais);
         
 
         db = openOrCreateDatabase("banco_dados",
