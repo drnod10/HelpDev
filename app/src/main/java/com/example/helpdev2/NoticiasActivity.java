@@ -31,7 +31,7 @@ public class NoticiasActivity extends AppCompatActivity {
         btprox = findViewById(R.id.btproximo);
         titulo = findViewById(R.id.titulonoticia);
         texto = findViewById(R.id.textonoticia);
-        status = findViewById(R.id.txtstatus);
+        
 
         db = openOrCreateDatabase("banco_dados",
                 Context.MODE_PRIVATE, null);
@@ -50,7 +50,7 @@ public class NoticiasActivity extends AppCompatActivity {
                 titulo.setText(res.getString(0));
                 texto.setText(res.getString(1));
                 texto.setMovementMethod(new ScrollingMovementMethod());
-                status.setText(indice + " / " + res.getCount());
+
             }
             btant.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -62,7 +62,7 @@ public class NoticiasActivity extends AppCompatActivity {
                             titulo.setText(res.getString(0));
                             texto.setText(res.getString(1));
                             texto.setMovementMethod(new ScrollingMovementMethod());
-                            status.setText(indice + " / " + res.getCount());
+
                         }
                     }
                 }
@@ -79,13 +79,13 @@ public class NoticiasActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     if (res.getCount() > 0) {
-                        if (indice <= res.getCount()) {
+                        if (indice < res.getCount()) {
                             indice++;
                             res.moveToNext();
                             titulo.setText(res.getString(0));
                             texto.setText(res.getString(1));
                             texto.setMovementMethod(new ScrollingMovementMethod());
-                            status.setText(indice + " / " + res.getCount());
+
                         }
                     }
                 }
