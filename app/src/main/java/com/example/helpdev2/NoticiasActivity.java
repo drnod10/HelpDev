@@ -17,8 +17,8 @@ public class NoticiasActivity extends AppCompatActivity {
 
     Button btvoltar, btprox, btant;
     SQLiteDatabase db;
-    TextView titulo, texto;
-    int contador;
+    TextView titulo, texto,status;
+    int contador,indice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,60 +30,67 @@ public class NoticiasActivity extends AppCompatActivity {
         btprox = findViewById(R.id.btproximo);
         titulo = findViewById(R.id.titulonoticia);
         texto = findViewById(R.id.textonoticia);
+        status = findViewById(R.id.txtstatus);
+
+        db = openOrCreateDatabase("banco_dados",
+                Context.MODE_PRIVATE, null);
+        db.execSQL("create table if not exists " +
+                "noticias(id integer primary key " +
+                "autoincrement, titulo text not null, texto text " +
+                "not null, " + "comentarios text not null)");
+        System.out.println("Banco de Dados Criado com Sucesso!");
+
+        final Cursor res = db.rawQuery("select titulo,texto from noticias", null);
 
         try {
-
-            db = openOrCreateDatabase("banco_dados",
-                    Context.MODE_PRIVATE, null);
-            db.execSQL("create table if not exists " +
-                    "noticias(id integer primary key " +
-                    "autoincrement, titulo text not null, texto text " +
-                    "not null, " + "comentarios text not null)");
-            System.out.println("Banco de Dados Criado com Sucesso!");
-
-            String apelido = "TESTE 3";
-            String email = "BBBBBBBBB";
-            String com = "";
-
-            System.out.println(apelido);
-            System.out.println(email);
-
-            db.execSQL("insert into noticias(id, titulo, texto, comentarios) values (null,'" + apelido + "','" + email + "','" + com + "')");
-
-            Cursor res = db.rawQuery("select titulo,texto from noticias", null);
-
             if (res.getCount() > 0) {
-
+                indice = res.getCount();
                 res.moveToLast();
-
                 titulo.setText(res.getString(0));
                 texto.setText(res.getString(1));
+                status.setText(indice + " / " + res.getCount());
             }
+            btant.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (res.getCount() > 0) {
+                        if (indice >1) {
+                            indice--;
+                            res.moveToPrevious();
+                            titulo.setText(res.getString(0));
+                            texto.setText(res.getString(1));
+                            status.setText(indice + " / " + res.getCount());
+                        }
+                    }
+                }
+            });
+
+            btvoltar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+
+            btprox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (res.getCount() > 0) {
+                        if (indice <= res.getCount()) {
+                            indice++;
+                            res.moveToNext();
+                            titulo.setText(res.getString(0));
+                            texto.setText(res.getString(1));
+                            status.setText(indice + " / " + res.getCount());
+                        }
+                    }
+                }
+            });
             } catch (Exception e) {
                 System.out.println(e.toString());
             }
 
-                btant.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        contador--;
-                        recreate();
-                    }
-                });
 
-                btvoltar.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        finish();
-                    }
-                });
-
-                btprox.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        contador++;
-                    }
-                });
             }
     }
 
