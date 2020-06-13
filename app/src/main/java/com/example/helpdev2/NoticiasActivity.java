@@ -41,8 +41,8 @@ public class NoticiasActivity extends AppCompatActivity {
                     "not null, " + "comentarios text not null)");
             System.out.println("Banco de Dados Criado com Sucesso!");
 
-            String apelido = "PROJEÇÃO MORREU DPS QUE O AKL SAIU !!!";
-            String email = "ESTUPIDOS !";
+            String apelido = "TESTE 3";
+            String email = "BBBBBBBBB";
             String com = "";
 
             System.out.println(apelido);
@@ -54,7 +54,7 @@ public class NoticiasActivity extends AppCompatActivity {
 
             if (res.getCount() > 0) {
 
-                res.moveToFirst();
+                res.moveToLast();
 
                 titulo.setText(res.getString(0));
                 texto.setText(res.getString(1));
@@ -67,6 +67,7 @@ public class NoticiasActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         contador--;
+                        recreate();
                     }
                 });
 
