@@ -7,6 +7,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -48,6 +49,7 @@ public class NoticiasActivity extends AppCompatActivity {
                 res.moveToLast();
                 titulo.setText(res.getString(0));
                 texto.setText(res.getString(1));
+                texto.setMovementMethod(new ScrollingMovementMethod());
                 status.setText(indice + " / " + res.getCount());
             }
             btant.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +61,7 @@ public class NoticiasActivity extends AppCompatActivity {
                             res.moveToPrevious();
                             titulo.setText(res.getString(0));
                             texto.setText(res.getString(1));
+                            texto.setMovementMethod(new ScrollingMovementMethod());
                             status.setText(indice + " / " + res.getCount());
                         }
                     }
@@ -81,6 +84,7 @@ public class NoticiasActivity extends AppCompatActivity {
                             res.moveToNext();
                             titulo.setText(res.getString(0));
                             texto.setText(res.getString(1));
+                            texto.setMovementMethod(new ScrollingMovementMethod());
                             status.setText(indice + " / " + res.getCount());
                         }
                     }
