@@ -24,21 +24,21 @@
         android:id="@+id/titulonoticia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:text="Título da Notícia"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
     <TextView
         android:id="@+id/textonoticia"
         android:layout_width="331dp"
         android:layout_height="95dp"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="44dp"
         android:text="Aqui vai ficar o texto da notícia bem grandão pra pegar a tela toda."
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titulonoticia" />
@@ -75,5 +75,16 @@
         app:layout_constraintHorizontal_bias="0.944"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textonoticia" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="432dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16"
+        app:srcCompat="@drawable/imagemnoticia" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
