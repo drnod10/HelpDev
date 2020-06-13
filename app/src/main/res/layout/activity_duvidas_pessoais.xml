@@ -47,34 +47,34 @@
         android:id="@+id/btanteriorpessoais"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="28dp"
         android:text="Anterior"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.109"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textopessoais" />
+        app:layout_constraintTop_toBottomOf="@+id/btcomentariospessoal" />
 
     <Button
         android:id="@+id/btvoltarpessoais"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="28dp"
         android:text="Voltar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textopessoais" />
+        app:layout_constraintTop_toBottomOf="@+id/btcomentariospessoal" />
 
     <Button
         android:id="@+id/btproximopessoais"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="28dp"
         android:text="Próxima"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_bias="0.873"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textopessoais" />
+        app:layout_constraintTop_toBottomOf="@+id/btcomentariospessoal" />
 
     <TextView
         android:id="@+id/textView21"
@@ -89,5 +89,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.333" />
+
+    <Button
+        android:id="@+id/btcomentariospessoal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Comentários"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textopessoais" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
