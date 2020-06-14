@@ -5,78 +5,76 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fundo2"
-    tools:context=".ComentarioPessoalActivity">
+    tools:context=".ComentarioGeralActivity">
 
     <TextView
-        android:id="@+id/textView22"
+        android:id="@+id/textView24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
         android:text="Comentários"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.055" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/comentariospessoal"
+        android:id="@+id/comentariosgeral"
         android:layout_width="338dp"
-        android:layout_height="251dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="241dp"
+        android:layout_marginTop="28dp"
         android:text="Comentários"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+        app:layout_constraintTop_toBottomOf="@+id/textView24" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Escreva um Comentário:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/comentariosgeral" />
 
     <EditText
-        android:id="@+id/escrevacomentariop"
-        android:layout_width="309dp"
-        android:layout_height="49dp"
+        android:id="@+id/escrevacomentariog"
+        android:layout_width="312dp"
+        android:layout_height="50dp"
         android:layout_marginTop="28dp"
         android:ems="10"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView25" />
-
-    <TextView
-        android:id="@+id/textView25"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Escreva um Comentário:"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/comentariospessoal" />
+        app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
     <Button
-        android:id="@+id/postarcomentariop"
+        android:id="@+id/postarcomentariog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="48dp"
         android:backgroundTint="#2196F3"
         android:text="Postar"
-        android:textColor="#F4F0F0"
+        android:textColor="#FBF9F9"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.157"
+        app:layout_constraintHorizontal_bias="0.154"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/escrevacomentariop" />
+        app:layout_constraintTop_toBottomOf="@+id/escrevacomentariog" />
 
     <Button
-        android:id="@+id/cancelarcomentariop"
+        android:id="@+id/cancelarcomentariog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="48dp"
         android:backgroundTint="#2196F3"
         android:text="Cancelar"
-        android:textColor="#F8F4F4"
+        android:textColor="#F8F6F6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.866"
+        app:layout_constraintHorizontal_bias="0.873"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/escrevacomentariop" />
+        app:layout_constraintTop_toBottomOf="@+id/escrevacomentariog" />
 </androidx.constraintlayout.widget.ConstraintLayout>

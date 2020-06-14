@@ -6,17 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class ComentarioPessoalActivity extends AppCompatActivity {
+public class ComentarioGeralActivity extends AppCompatActivity {
 
-    Button btcancelar, btpostar;
+    Button btcancelar,btpostar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_comentario_pessoal);
+        setContentView(R.layout.activity_comentario_geral);
 
-        btcancelar = findViewById(R.id.cancelarcomentariop);
-        btpostar = findViewById(R.id.postarcomentariop);
+        btcancelar = findViewById(R.id.cancelarcomentariog);
+        btpostar = findViewById(R.id.postarcomentariog);
 
         btcancelar.setOnClickListener(new View.OnClickListener() {
             @Override

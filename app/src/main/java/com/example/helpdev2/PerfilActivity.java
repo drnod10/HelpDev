@@ -12,12 +12,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class PerfilActivity extends AppCompatActivity {
 
     EditText nome,apelido,email,telefone;
     Button btcancelar,btdeletar,btatualizar;
     SQLiteDatabase db;
+    TextView titulo;
 
 
     @Override
@@ -29,6 +31,7 @@ public class PerfilActivity extends AppCompatActivity {
         apelido = findViewById(R.id.apelidoperfil);
         email = findViewById(R.id.emailperfil);
         telefone = findViewById(R.id.telefoneperfil);
+        titulo = findViewById(R.id.textView8);
 
         btcancelar = findViewById(R.id.btcancelarperfil);
         btdeletar = findViewById(R.id.btdeletar);
@@ -51,6 +54,7 @@ public class PerfilActivity extends AppCompatActivity {
                 apelido.setText(res.getString(1));
                 email.setText(res.getString(2));
                 telefone.setText(res.getString(3));
+                titulo.setText("Bem-Vindo, "+res.getString(0)+"!");
 
                 btcancelar.setOnClickListener(new View.OnClickListener() {
                     @Override

@@ -27,11 +27,7 @@ public class PostarDuvidaActivity extends AppCompatActivity {
         txttext = findViewById(R.id.textoduvida);
 
         final Cliente c = getIntent().getExtras().getParcelable("cliente");
-
-
-
         try {
-
             db = openOrCreateDatabase("banco_dados", Context.MODE_PRIVATE, null);
             db.execSQL("create table if not exists " +
                     "postagem(id integer primary key " +
@@ -39,15 +35,12 @@ public class PostarDuvidaActivity extends AppCompatActivity {
                     "not null, id_user integer not null)");
             System.out.println("Banco de Dados Criado com Sucesso!");
 
-
-
             btpostar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     String titulo = txttitulo.getText().toString();
                     String texto = txttext.getText().toString();
                     int id_user = c.getCodigo();
-
                     System.out.println(titulo);
                     System.out.println(texto);
                     db.execSQL("insert into postagem(titulo, texto,id_user) values ('"+titulo+"','"+texto+"','"+id_user+"')");
@@ -58,6 +51,7 @@ public class PostarDuvidaActivity extends AppCompatActivity {
                             .show();
                 }
             });
+
             btcancelar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -67,12 +61,7 @@ public class PostarDuvidaActivity extends AppCompatActivity {
             });
 
         } catch (Exception e) {
-
             System.out.println("Erro ao Cadastrar Dados!");
-
         }
-
-
-
     }
 }

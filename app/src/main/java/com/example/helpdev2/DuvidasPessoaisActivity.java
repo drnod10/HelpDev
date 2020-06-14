@@ -3,6 +3,7 @@ package com.example.helpdev2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -13,7 +14,7 @@ import android.widget.TextView;
 
 public class DuvidasPessoaisActivity extends AppCompatActivity {
 
-    Button btvoltar,btanterior,btproximo;
+    Button btvoltar,btanterior,btproximo,btcomentarios;
     TextView txttitulo,txttexto,status;
     SQLiteDatabase db;
     int indice,codigo;
@@ -26,6 +27,7 @@ public class DuvidasPessoaisActivity extends AppCompatActivity {
         btvoltar = findViewById(R.id.btvoltarpessoais);
         btanterior = findViewById(R.id.btanteriorpessoais);
         btproximo = findViewById(R.id.btproximopessoais);
+        btcomentarios = findViewById(R.id.btcomentariospessoal);
 
         txttitulo = findViewById(R.id.titulopessoais);
         txttexto = findViewById(R.id.textopessoais);
@@ -82,6 +84,14 @@ public class DuvidasPessoaisActivity extends AppCompatActivity {
                             status.setText(indice + " / " + res.getCount());
                         }
                     }
+                }
+            });
+
+            btcomentarios.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(DuvidasPessoaisActivity.this, ComentarioPessoalActivity.class);
+                    startActivity(intent);
                 }
             });
 
