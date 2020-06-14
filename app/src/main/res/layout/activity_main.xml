@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textColor="#070707"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -37,6 +38,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
+        android:textColor="#070707"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -74,7 +76,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:shadowColor="#F6F5F5"
         android:text="Usuário"
+        android:textColor="#070707"
+        android:textColorHint="#FAF7F7"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -87,6 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Senha"
+        android:textColor="#090909"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,6 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="Ainda não tem uma Conta?"
+        android:textColor="#050505"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btlogar" />
