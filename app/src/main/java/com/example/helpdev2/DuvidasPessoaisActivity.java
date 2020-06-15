@@ -19,6 +19,7 @@ public class DuvidasPessoaisActivity extends AppCompatActivity {
     SQLiteDatabase db;
     int indice,codigo;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,13 +34,11 @@ public class DuvidasPessoaisActivity extends AppCompatActivity {
         txttexto = findViewById(R.id.textopessoais);
         status = findViewById(R.id.status);
 
-
-        final Cliente[] c = {getIntent().getExtras().getParcelable("cliente")};
-
         try {
+            final Cliente c = getIntent().getExtras().getParcelable("cliente");
 
 
-            int id = c[0].getCodigo();
+            int id = c.getCodigo();
             db = openOrCreateDatabase("banco_dados",Context.MODE_PRIVATE, null);
             final Cursor res = db.rawQuery("select * from postagem where id_user ='"+id+"' ", null);
 
@@ -90,8 +89,20 @@ public class DuvidasPessoaisActivity extends AppCompatActivity {
             btcomentarios.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(DuvidasPessoaisActivity.this, ComentarioPessoalActivity.class);
-                    startActivity(intent);
+
+
+                    Integer cd = codigo;
+                    Integer id = c.getCodigo();
+
+                    Cliente cliente = new Cliente(cd);
+                    IDClass d = new IDClass(id);
+
+                    Intent it = new Intent(DuvidasPessoaisActivity.this, ComentarioPessoalActivity.class);
+
+                    it.putExtra("cliente", cliente);
+                    it.putExtra("id_user", d);
+
+                    startActivity(it);
                 }
             });
 
