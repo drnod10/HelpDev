@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class ComentarioPessoalActivity extends AppCompatActivity {
 
     Button btcancelar, btpostar;
-    SQLiteDatabase db,tp;
+    SQLiteDatabase db, tp;
     TextView comentpessoal, escrevacomentario;
 
     int indice, codigo;
@@ -35,9 +35,6 @@ public class ComentarioPessoalActivity extends AppCompatActivity {
         final IDClass d = getIntent().getExtras().getParcelable("id_user");
 
 
-
-
-
         db = openOrCreateDatabase("banco_dados", Context.MODE_PRIVATE, null);
         db.execSQL("create table if not exists " +
                 "comentarios(id integer primary key " +
@@ -50,41 +47,35 @@ public class ComentarioPessoalActivity extends AppCompatActivity {
         System.out.println(d.getCodigo());
 
 
-
-
-        final Cursor res = db.rawQuery("select nome_comentador,coment from comentarios WHERE id_user_postagem ="+d.getCodigo(), null);
+        final Cursor res = db.rawQuery("select nome_comentador,coment from comentarios WHERE id_user_postagem =" + d.getCodigo(), null);
         ArrayList<String> coments = new ArrayList();
         if (res.getCount() > 0) {
+
             res.moveToFirst();
 
-
-
-            /* do {
-                coments.add(res.getString(1) + ":" + res.getString(2));
-            }while (res.moveToNext()); */
-
-
-
-
-            for(int i = 0; i<coments.size(); i++){
-
-
-                coments.add(res.getString(i) + ":" + res.getString(i));
-                res.moveToNext();
-                comentpessoal.setText(coments.get(i)+"\n");
-
+            while (res.moveToNext()) {
+                int a = 0;
+                int b = 1;
+                coments.add(res.getString(a) + ":" + res.getString(b));
+                a++;
+                a++;
+                b++;
+                b++;
             }
+        }
 
             System.out.println(coments.size());
-            comentpessoal.setMovementMethod(new ScrollingMovementMethod());
+            System.out.println(coments.get(0));
+            System.out.println(coments.get(1));
+            System.out.println(coments.get(2));
+            System.out.println(coments.get(3));
+            System.out.println(coments.get(4));
 
+            for (int i = 0; i < coments.size(); i++) {
 
-            //comentpessoal.setText(nomee + ":" + coment+ "\n");
+                comentpessoal.setText(coments.get(i) + "\n");
+                comentpessoal.setMovementMethod(new ScrollingMovementMethod());
 
-
-
-
-            //status.setText(indice + " / " + res.getCount());
             }
 
             btcancelar.setOnClickListener(new View.OnClickListener() {
@@ -95,30 +86,30 @@ public class ComentarioPessoalActivity extends AppCompatActivity {
             });
 
 
-
             btpostar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
-                        Integer id_post = d.getCodigo();
-                        String nm = c.getNome();
-                        String cm = escrevacomentario.getText().toString();
+                    Integer id_post = d.getCodigo();
+                    String nm = c.getNome();
+                    String cm = escrevacomentario.getText().toString();
 
-                        System.out.println(nm);
-                        System.out.println(cm);
-                        System.out.println(id_post);
+                    System.out.println(nm);
+                    System.out.println(cm);
+                    System.out.println(id_post);
 
-                        db.execSQL("insert into comentarios(nome_comentador, coment,id_user_postagem) values " +
-                                "('" + nm + "','" + cm + "','" + id_post + "')");
+                    db.execSQL("insert into comentarios(nome_comentador, coment,id_user_postagem) values " +
+                            "('" + nm + "','" + cm + "','" + id_post + "')");
 
-                        AlertDialog.Builder dialogo = new AlertDialog.Builder(ComentarioPessoalActivity.this);
-                        dialogo.setTitle("Aviso");
-                        dialogo.setMessage("Comentário Postado com Sucesso !")
-                                .setNeutralButton("OK", null)
-                                .show();
+                    AlertDialog.Builder dialogo = new AlertDialog.Builder(ComentarioPessoalActivity.this);
+                    dialogo.setTitle("Aviso");
+                    dialogo.setMessage("Comentário Postado com Sucesso !")
+                            .setNeutralButton("OK", null)
+                            .show();
 
                 }
             });
         }
-}
+    }
+
 
