@@ -22,6 +22,7 @@ public class ComentarioPessoalActivity extends AppCompatActivity {
 
     int indice, codigo;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,7 @@ public class ComentarioPessoalActivity extends AppCompatActivity {
         escrevacomentario = findViewById(R.id.escrevacomentariop);
         final Cliente c = getIntent().getExtras().getParcelable("cliente");
         final IDClass d = getIntent().getExtras().getParcelable("id_user");
+
 
 
         db = openOrCreateDatabase("banco_dados", Context.MODE_PRIVATE, null);
@@ -47,36 +49,8 @@ public class ComentarioPessoalActivity extends AppCompatActivity {
         System.out.println(d.getCodigo());
 
 
-        final Cursor res = db.rawQuery("select nome_comentador,coment from comentarios WHERE id_user_postagem =" + d.getCodigo(), null);
-        ArrayList<String> coments = new ArrayList();
-        if (res.getCount() > 0) {
-
-            res.moveToFirst();
-
-            while (res.moveToNext()) {
-                int a = 0;
-                int b = 1;
-                coments.add(res.getString(a) + ":" + res.getString(b));
-                a++;
-                a++;
-                b++;
-                b++;
-            }
-        }
-
-            System.out.println(coments.size());
-            System.out.println(coments.get(0));
-            System.out.println(coments.get(1));
-            System.out.println(coments.get(2));
-            System.out.println(coments.get(3));
-            System.out.println(coments.get(4));
-
-            for (int i = 0; i < coments.size(); i++) {
-
-                comentpessoal.setText(coments.get(i) + "\n");
-                comentpessoal.setMovementMethod(new ScrollingMovementMethod());
-
-            }
+            comentpessoal.setText("");
+            MostraComentario(d.getCodigo());
 
             btcancelar.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -106,9 +80,38 @@ public class ComentarioPessoalActivity extends AppCompatActivity {
                     dialogo.setMessage("Comentário Postado com Sucesso !")
                             .setNeutralButton("OK", null)
                             .show();
-
+                    comentpessoal.setText("");
+                    MostraComentario(d.getCodigo());
+                    escrevacomentario.setText("");
                 }
             });
+        }
+        public void MostraComentario (int val) {
+
+            final Cursor res = db.rawQuery("select nome_comentador,coment from comentarios WHERE id_user_postagem =" + val, null);
+            ArrayList<String> coments = new ArrayList();
+            if (res.getCount() > 0) {
+
+                res.moveToFirst();
+
+                while (res.moveToNext()) {
+                    int a = 0;
+                    int b = 1;
+                    coments.add(res.getString(a) + ":" + res.getString(b));
+                    a++;
+                    a++;
+                    b++;
+                    b++;
+                }
+            }
+            for (int i = 0; i < coments.size(); i++) {
+
+                comentpessoal.setText(comentpessoal.getText()+" "+coments.get(i) + "\n");
+                comentpessoal.setMovementMethod(new ScrollingMovementMethod());
+
+            }
+
+
         }
     }
 
