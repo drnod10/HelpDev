@@ -93,9 +93,12 @@ public class DuvidasPessoaisActivity extends AppCompatActivity {
 
                     Integer cd = codigo;
                     Integer id = c.getCodigo();
+                    String nome = c.getNome();
+                    System.out.println(id);
+                    System.out.println(nome);
 
-                    Cliente cliente = new Cliente(cd);
-                    IDClass d = new IDClass(id);
+                    Cliente cliente = new Cliente(id,nome);
+                    IDClass d = new IDClass(cd);
 
                     Intent it = new Intent(DuvidasPessoaisActivity.this, ComentarioPessoalActivity.class);
 

@@ -5,15 +5,26 @@ import android.os.Parcelable;
 
 public class Cliente implements Parcelable {
     private int codigo;
+    private String nome;
 
 
-    public Cliente(int codigo) {
+    public Cliente(int codigo,String nome) {
         this.codigo = codigo;
+        this.nome = nome;
 
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     private Cliente(Parcel p){
         codigo = p.readInt();
+        nome = p.readString();
     }
 
     public static final Parcelable.Creator
@@ -45,6 +56,7 @@ public class Cliente implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(codigo);
+        dest.writeString(nome);
 
     }
 }

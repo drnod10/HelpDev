@@ -36,10 +36,13 @@ public class TelaInicialActivity extends AppCompatActivity {
                 Cliente c = getIntent().getExtras().getParcelable("cliente");
 
                 Integer cd = c.getCodigo();
+                String nome = c.getNome();
 
-                Cliente cliente = new Cliente(cd);
+
+                Cliente cliente = new Cliente(cd,nome);
 
                 System.out.println(cd);
+                System.out.println(nome);
 
                 Intent it = new Intent(TelaInicialActivity.this, CodigoActivity.class);
 
@@ -56,8 +59,10 @@ public class TelaInicialActivity extends AppCompatActivity {
                 Cliente c = getIntent().getExtras().getParcelable("cliente");
 
                 Integer cd = c.getCodigo();
+                String nome = c.getNome();
 
-                Cliente cliente = new Cliente(cd);
+
+                Cliente cliente = new Cliente(cd,nome);
 
                 System.out.println(cd);
 

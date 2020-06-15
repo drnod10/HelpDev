@@ -12,10 +12,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class ComentarioPessoalActivity extends AppCompatActivity {
 
     Button btcancelar, btpostar;
-    SQLiteDatabase db;
+    SQLiteDatabase db,tp;
     TextView comentpessoal, escrevacomentario;
 
     int indice, codigo;
@@ -31,8 +33,8 @@ public class ComentarioPessoalActivity extends AppCompatActivity {
         escrevacomentario = findViewById(R.id.escrevacomentariop);
         final Cliente c = getIntent().getExtras().getParcelable("cliente");
         final IDClass d = getIntent().getExtras().getParcelable("id_user");
-        final Integer cb = d.getCodigo();
-        final Integer iup = c.getCodigo();
+
+
 
 
 
@@ -42,20 +44,46 @@ public class ComentarioPessoalActivity extends AppCompatActivity {
                 "autoincrement, nome_comentador text not null, coment text " +
                 "not null, id_user_postagem integer not null)");
         System.out.println("Banco de Dados Criado com Sucesso!");
+
         System.out.println(c.getCodigo());
+        System.out.println(c.getNome());
         System.out.println(d.getCodigo());
 
 
-        final Cursor res = db.rawQuery("select * from comentarios", null);
-        if (res.getCount() > 0) {
-            indice = res.getCount();
-            res.moveToLast();
-            codigo = res.getInt(0);
-            String nome = res.getString(1);
-            String coment = res.getString(2);
-            comentpessoal.setText(nome + ":" + coment);
 
+
+        final Cursor res = db.rawQuery("select nome_comentador,coment from comentarios WHERE id_user_postagem ="+d.getCodigo(), null);
+        ArrayList<String> coments = new ArrayList();
+        if (res.getCount() > 0) {
+            res.moveToFirst();
+
+
+
+            /* do {
+                coments.add(res.getString(1) + ":" + res.getString(2));
+            }while (res.moveToNext()); */
+
+
+
+
+            for(int i = 0; i<coments.size(); i++){
+
+
+                coments.add(res.getString(i) + ":" + res.getString(i));
+                res.moveToNext();
+                comentpessoal.setText(coments.get(i)+"\n");
+
+            }
+
+            System.out.println(coments.size());
             comentpessoal.setMovementMethod(new ScrollingMovementMethod());
+
+
+            //comentpessoal.setText(nomee + ":" + coment+ "\n");
+
+
+
+
             //status.setText(indice + " / " + res.getCount());
             }
 
@@ -66,31 +94,29 @@ public class ComentarioPessoalActivity extends AppCompatActivity {
                 }
             });
 
+
+
             btpostar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Cursor ress = db.rawQuery("select * from usuarios WHERE id = "+cb+"", null);
-                    if (ress.getCount() > 0) {
-                        String nome = ress.getString(0);
+
+                        Integer id_post = d.getCodigo();
+                        String nm = c.getNome();
                         String cm = escrevacomentario.getText().toString();
-                        System.out.println(nome);
+
+                        System.out.println(nm);
                         System.out.println(cm);
-                        System.out.println(iup);
+                        System.out.println(id_post);
+
                         db.execSQL("insert into comentarios(nome_comentador, coment,id_user_postagem) values " +
-                                "('" + nome + "','" + cm + "','" + iup + "')");
+                                "('" + nm + "','" + cm + "','" + id_post + "')");
+
                         AlertDialog.Builder dialogo = new AlertDialog.Builder(ComentarioPessoalActivity.this);
                         dialogo.setTitle("Aviso");
                         dialogo.setMessage("Comentário Postado com Sucesso !")
                                 .setNeutralButton("OK", null)
                                 .show();
-                    }else{
-                        AlertDialog.Builder dialogo = new AlertDialog.Builder(ComentarioPessoalActivity.this);
-                        dialogo.setTitle("Aviso");
-                        dialogo.setMessage("Erro na consulta")
-                                .setNeutralButton("OK", null)
-                                .show();
 
-                    }
                 }
             });
         }

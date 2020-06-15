@@ -62,9 +62,6 @@ public class MainActivity extends AppCompatActivity {
                     final String lg = edlogin.getText().toString();
                     final String pass = edsenha.getText().toString();
 
-
-
-
                     c = db.rawQuery("select * from usuarios where apelido=? AND senha=?", new String[]{lg , pass});
 
                     if(c.getCount() > 0) {
@@ -72,10 +69,12 @@ public class MainActivity extends AppCompatActivity {
                         c.moveToFirst();
 
                         int cod = c.getInt(0);
+                        String nome = c.getString(1);
 
-                        Cliente cliente = new Cliente(cod);
+                        Cliente cliente = new Cliente(cod,nome);
 
                         System.out.println(cod);
+                        System.out.println(nome);
 
                         Intent it = new Intent(MainActivity.this, TelaInicialActivity.class);
 

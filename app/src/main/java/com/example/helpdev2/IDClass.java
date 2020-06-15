@@ -4,12 +4,23 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class IDClass implements Parcelable{
+
     private int codigo;
+    private String nome;
 
 
     public IDClass(int codigo) {
         this.codigo = codigo;
+        this.nome = nome;
 
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     private IDClass(Parcel p){
@@ -45,6 +56,6 @@ public class IDClass implements Parcelable{
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(codigo);
-
+        dest.writeString(nome);
     }
 }
