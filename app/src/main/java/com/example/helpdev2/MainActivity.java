@@ -44,9 +44,6 @@ public class MainActivity extends AppCompatActivity {
                     "not null, " + "email text not null," + "telefone text not null," + "senha text not null)");
             System.out.println("Banco de Dados Criado com Sucesso!");
 
-
-
-
             btcadastrar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -76,12 +73,23 @@ public class MainActivity extends AppCompatActivity {
                         System.out.println(cod);
                         System.out.println(nome);
 
-                        Intent it = new Intent(MainActivity.this, TelaInicialActivity.class);
+                        if(lg.equals("admin") && pass.equals("123")){
 
-                        it.putExtra("cliente", cliente);
+                            Intent it = new Intent(MainActivity.this, TelaAdminActivity.class);
 
-                        startActivity(it);
+                            it.putExtra("cliente", cliente);
 
+                            startActivity(it);
+
+                            }else{
+
+                            Intent it = new Intent(MainActivity.this, TelaInicialActivity.class);
+
+                            it.putExtra("cliente", cliente);
+
+                            startActivity(it);
+
+                        }
 
                     }else {
                             AlertDialog.Builder dialogo = new AlertDialog.Builder(MainActivity.this);

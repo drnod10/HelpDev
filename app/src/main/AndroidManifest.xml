@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".InsereNoticiaActivity"></activity>
-        <activity android:name=".TelaAdminAcvitivty" />
+        <activity android:name=".TelaAdminActivity" />
         <activity android:name=".ComentarioGeralActivity" />
         <activity android:name=".ComentarioPessoalActivity" />
         <activity android:name=".PostarDuvidaActivity" />

@@ -16,10 +16,10 @@ public class TelaAdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_inicial);
 
-        btnoticias = findViewById(R.id.imageView);
-        btcodigo = findViewById(R.id.imageView2);
-        btperfil = findViewById(R.id.imageView3);
-        btsair = findViewById(R.id.imageView4);
+        btnoticias = findViewById(R.id.imageView6);
+        btcodigo = findViewById(R.id.imageView7);
+        btperfil = findViewById(R.id.imageView8);
+        btsair = findViewById(R.id.imageView11);
         btinserir = findViewById(R.id.imageView10);
 
         btnoticias.setOnClickListener(new View.OnClickListener() {
