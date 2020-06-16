@@ -33,6 +33,8 @@ public class ComentarioPessoalActivity extends AppCompatActivity {
         comentpessoal = findViewById(R.id.comentariospessoal);
         escrevacomentario = findViewById(R.id.escrevacomentariop);
 
+        db = openOrCreateDatabase("banco_dados", Context.MODE_PRIVATE, null);
+
         final Cliente c = getIntent().getExtras().getParcelable("cliente");
         final IDClass d = getIntent().getExtras().getParcelable("id_user");
 

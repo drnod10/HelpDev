@@ -26,6 +26,8 @@ public class PostarDuvidaActivity extends AppCompatActivity {
         txttitulo = findViewById(R.id.tituloduvida);
         txttext = findViewById(R.id.textoduvida);
 
+        db = openOrCreateDatabase("banco_dados", Context.MODE_PRIVATE, null);
+
         final Cliente c = getIntent().getExtras().getParcelable("cliente");
         try {
 

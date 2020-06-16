@@ -23,6 +23,7 @@ public class CodigoActivity extends AppCompatActivity {
         gerais = findViewById(R.id.duvidasgerais);
         pessoais = findViewById(R.id.duvidaspessoais);
         nova = findViewById(R.id.novaduvida);
+
         final Cliente c = getIntent().getExtras().getParcelable("cliente");
 
         btvoltar.setOnClickListener(new View.OnClickListener() {

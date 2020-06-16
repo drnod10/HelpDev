@@ -29,6 +29,8 @@ public class NoticiasActivity extends AppCompatActivity {
         titulo = findViewById(R.id.titulopessoais);
         texto = findViewById(R.id.textopessoais);
 
+        db = openOrCreateDatabase("banco_dados", Context.MODE_PRIVATE, null);
+
         final Cursor res = db.rawQuery("select titulo,texto from noticias", null);
 
         try {

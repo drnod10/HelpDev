@@ -66,13 +66,6 @@ public class MainActivity extends AppCompatActivity {
                     "not null, id_user_postagem integer not null)");
             System.out.println("Tabela de Comentários Criada!");
 
-            db = openOrCreateDatabase("banco_dados", Context.MODE_PRIVATE, null);
-            db.execSQL("create table if not exists " +
-                    "comentarios(id integer primary key " +
-                    "autoincrement, nome_comentador text not null, coment text " +
-                    "not null, id_user_postagem integer not null)");
-            System.out.println("Tabela de Comentários Pessoais Criada!");
-
             btcadastrar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
