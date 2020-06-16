@@ -64,54 +64,65 @@ public class ComentarioPessoalActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    Integer id_post = d.getCodigo();
-                    String nm = c.getNome();
-                    String cm = escrevacomentario.getText().toString();
+                if (escrevacomentario.getText().toString().length() == 0 ) {
+                        AlertDialog.Builder dialogo = new AlertDialog.Builder(ComentarioPessoalActivity.this);
+                        dialogo.setTitle("ERRO");
+                        dialogo.setMessage("Campo de Comentário Vazio !")
+                                .setNeutralButton("OK", null)
+                                .show();
 
-                    System.out.println(nm);
-                    System.out.println(cm);
-                    System.out.println(id_post);
 
-                    db.execSQL("insert into comentarios(nome_comentador, coment,id_user_postagem) values " +
-                            "('" + nm + "','" + cm + "','" + id_post + "')");
+                    }else {
 
-                    AlertDialog.Builder dialogo = new AlertDialog.Builder(ComentarioPessoalActivity.this);
-                    dialogo.setTitle("Aviso");
-                    dialogo.setMessage("Comentário Postado com Sucesso !")
-                            .setNeutralButton("OK", null)
-                            .show();
-                    comentpessoal.setText("");
-                    MostraComentario(d.getCodigo());
-                    escrevacomentario.setText("");
+                        Integer id_post = d.getCodigo();
+                        String nm = c.getNome();
+                        String cm = escrevacomentario.getText().toString();
+
+                        System.out.println(nm);
+                        System.out.println(cm);
+                        System.out.println(id_post);
+
+                        db.execSQL("insert into comentarios(nome_comentador, coment,id_user_postagem) values " +
+                                "('" + nm + "','" + cm + "','" + id_post + "')");
+
+                        AlertDialog.Builder dialogo = new AlertDialog.Builder(ComentarioPessoalActivity.this);
+                        dialogo.setTitle("Aviso");
+                        dialogo.setMessage("Comentário Postado com Sucesso !")
+                                .setNeutralButton("OK", null)
+                                .show();
+                        comentpessoal.setText("");
+                        MostraComentario(d.getCodigo());
+                        escrevacomentario.setText("");
+                    }
                 }
             });
         }
         public void MostraComentario (int val) {
 
             final Cursor res = db.rawQuery("select nome_comentador,coment from comentarios WHERE id_user_postagem =" + val, null);
-            ArrayList<String> coments = new ArrayList();
-            if (res.getCount() > 0) {
 
+            ArrayList<String> coments = new ArrayList();
+            System.out.println("Linhas do banco");
+            System.out.println(res.getCount());
+            if (res.getCount() > 0) {
                 res.moveToFirst();
 
-                while (res.moveToNext()) {
+                for (int i = 1 ; i <= res.getCount(); i++) {
                     int a = 0;
                     int b = 1;
-                    coments.add(res.getString(a) + ":" + res.getString(b));
-                    a++;
+                    coments.add(res.getString(a) + ": " + res.getString(b));
                     a++;
                     b++;
-                    b++;
+                    res.moveToNext();
                 }
+                for (int i = 0; i < coments.size(); i++) {
+                    comentpessoal.setText(comentpessoal.getText()+coments.get(i) + "\n\n");
+                    comentpessoal.setMovementMethod(new ScrollingMovementMethod());
+                }
+            }else {
+                comentpessoal.setText("");
+                comentpessoal.setText("Nenhum Comentário !");
             }
-            for (int i = 0; i < coments.size(); i++) {
-
-                comentpessoal.setText(comentpessoal.getText()+" "+coments.get(i) + "\n");
-                comentpessoal.setMovementMethod(new ScrollingMovementMethod());
-
-            }
-
-
         }
     }
 

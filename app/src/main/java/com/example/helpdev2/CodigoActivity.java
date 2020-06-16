@@ -35,6 +35,7 @@ public class CodigoActivity extends AppCompatActivity {
         gerais.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Cliente c = getIntent().getExtras().getParcelable("cliente");
 
                 Integer cd = c.getCodigo();
@@ -55,6 +56,7 @@ public class CodigoActivity extends AppCompatActivity {
         pessoais.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Cliente c = getIntent().getExtras().getParcelable("cliente");
 
                 Integer cd = c.getCodigo();
