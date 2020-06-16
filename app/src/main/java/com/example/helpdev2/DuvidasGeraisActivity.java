@@ -29,6 +29,10 @@ public class DuvidasGeraisActivity extends AppCompatActivity {
         btanterior = findViewById(R.id.anteriorgeral);
         btproximo = findViewById(R.id.proximogeral);
 
+        txttitulo = findViewById(R.id.titulogeral);
+        txttexto = findViewById(R.id.textogeral);
+        status = findViewById(R.id.statusg);
+
         try {
             final Cliente c = getIntent().getExtras().getParcelable("cliente");
 

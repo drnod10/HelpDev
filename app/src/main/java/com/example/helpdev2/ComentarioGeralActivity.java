@@ -41,6 +41,12 @@ public class ComentarioGeralActivity extends AppCompatActivity {
                 "autoincrement, nome_comentador text not null, coment text " +
                 "not null, id_user_postagem integer not null)");
         System.out.println("Banco de Dados Criado com Sucesso!");
+        System.out.println(d.getCodigo());
+        System.out.println(c.getNome());
+        System.out.println(d.getCodigo());
+
+        comentgeral.setText("");
+        MostraComentario(d.getCodigo());
 
         btcancelar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,24 +89,23 @@ public class ComentarioGeralActivity extends AppCompatActivity {
         ArrayList<String> coments = new ArrayList();
 
         if (res.getCount() > 0) {
-
             res.moveToFirst();
 
-            while (res.moveToNext()) {
+            for (int i = 1 ; i <= res.getCount(); i++) {
                 int a = 0;
                 int b = 1;
-                coments.add(res.getString(a) + ":" + res.getString(b));
-                a++;
+                coments.add(res.getString(a) + ": " + res.getString(b));
                 a++;
                 b++;
-                b++;
+                res.moveToNext();
             }
-        }
-        for (int i = 0; i < coments.size(); i++) {
-
-            comentgeral.setText(comentgeral.getText() + " " + coments.get(i) + "\n");
-            comentgeral.setMovementMethod(new ScrollingMovementMethod());
-
+            for (int i = 0; i < coments.size(); i++) {
+                comentgeral.setText(comentgeral.getText()+coments.get(i) + "\n\n");
+                comentgeral.setMovementMethod(new ScrollingMovementMethod());
+            }
+        }else {
+            comentgeral.setText("");
+            comentgeral.setText("Nenhum Comentário !");
         }
     }
 }
