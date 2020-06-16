@@ -28,15 +28,6 @@ public class NoticiasActivity extends AppCompatActivity {
         btprox = findViewById(R.id.btproximopessoais);
         titulo = findViewById(R.id.titulopessoais);
         texto = findViewById(R.id.textopessoais);
-        
-
-        db = openOrCreateDatabase("banco_dados",
-                Context.MODE_PRIVATE, null);
-        db.execSQL("create table if not exists " +
-                "noticias(id integer primary key " +
-                "autoincrement, titulo text not null, texto text " +
-                "not null)");
-        System.out.println("Banco de Dados Criado com Sucesso!");
 
         final Cursor res = db.rawQuery("select titulo,texto from noticias", null);
 

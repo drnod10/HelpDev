@@ -25,14 +25,6 @@ public class TelaAdminActivity extends AppCompatActivity {
         sair = findViewById(R.id.imageView11);
         inserir = findViewById(R.id.imageView10);
 
-        db = openOrCreateDatabase("banco_dados",
-                Context.MODE_PRIVATE, null);
-        db.execSQL("create table if not exists " +
-                "noticias(id integer primary key " +
-                "autoincrement, titulo text not null, texto text " +
-                "not null)");
-        System.out.println("Banco de Dados Criado com Sucesso!");
-
         noticias.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

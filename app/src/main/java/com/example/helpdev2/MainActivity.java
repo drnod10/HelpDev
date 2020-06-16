@@ -42,7 +42,36 @@ public class MainActivity extends AppCompatActivity {
                     "usuarios(id integer primary key " +
                     "autoincrement, nome text not null, apelido text " +
                     "not null, " + "email text not null," + "telefone text not null," + "senha text not null)");
-            System.out.println("Banco de Dados Criado com Sucesso!");
+            System.out.println("Tabela de Usuários Criada!");
+
+            db = openOrCreateDatabase("banco_dados",
+                    Context.MODE_PRIVATE, null);
+            db.execSQL("create table if not exists " +
+                    "noticias(id integer primary key " +
+                    "autoincrement, titulo text not null, texto text " +
+                    "not null)");
+            System.out.println("Tabela de Notícias Criada!");
+
+            db = openOrCreateDatabase("banco_dados", Context.MODE_PRIVATE, null);
+            db.execSQL("create table if not exists " +
+                    "postagem(id integer primary key " +
+                    "autoincrement, titulo text not null, texto text " +
+                    "not null, id_user integer not null)");
+            System.out.println("Tabela de Postagem Criada!");
+
+            db = openOrCreateDatabase("banco_dados", Context.MODE_PRIVATE, null);
+            db.execSQL("create table if not exists " +
+                    "comentarios(id integer primary key " +
+                    "autoincrement, nome_comentador text not null, coment text " +
+                    "not null, id_user_postagem integer not null)");
+            System.out.println("Tabela de Comentários Criada!");
+
+            db = openOrCreateDatabase("banco_dados", Context.MODE_PRIVATE, null);
+            db.execSQL("create table if not exists " +
+                    "comentarios(id integer primary key " +
+                    "autoincrement, nome_comentador text not null, coment text " +
+                    "not null, id_user_postagem integer not null)");
+            System.out.println("Tabela de Comentários Pessoais Criada!");
 
             btcadastrar.setOnClickListener(new View.OnClickListener() {
                 @Override

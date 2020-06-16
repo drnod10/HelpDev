@@ -28,12 +28,6 @@ public class PostarDuvidaActivity extends AppCompatActivity {
 
         final Cliente c = getIntent().getExtras().getParcelable("cliente");
         try {
-            db = openOrCreateDatabase("banco_dados", Context.MODE_PRIVATE, null);
-            db.execSQL("create table if not exists " +
-                    "postagem(id integer primary key " +
-                    "autoincrement, titulo text not null, texto text " +
-                    "not null, id_user integer not null)");
-            System.out.println("Banco de Dados Criado com Sucesso!");
 
             btpostar.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -32,22 +32,13 @@ public class ComentarioPessoalActivity extends AppCompatActivity {
         btpostar = findViewById(R.id.postarcomentariop);
         comentpessoal = findViewById(R.id.comentariospessoal);
         escrevacomentario = findViewById(R.id.escrevacomentariop);
+
         final Cliente c = getIntent().getExtras().getParcelable("cliente");
         final IDClass d = getIntent().getExtras().getParcelable("id_user");
-
-
-
-        db = openOrCreateDatabase("banco_dados", Context.MODE_PRIVATE, null);
-        db.execSQL("create table if not exists " +
-                "comentarios(id integer primary key " +
-                "autoincrement, nome_comentador text not null, coment text " +
-                "not null, id_user_postagem integer not null)");
-        System.out.println("Banco de Dados Criado com Sucesso!");
 
         System.out.println(c.getCodigo());
         System.out.println(c.getNome());
         System.out.println(d.getCodigo());
-
 
             comentpessoal.setText("");
             MostraComentario(d.getCodigo());
