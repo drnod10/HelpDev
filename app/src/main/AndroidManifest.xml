@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ComentarioGeralActivity"></activity>
+        <activity android:name=".InsereNoticiaActivity"></activity>
+        <activity android:name=".TelaAdminAcvitivty" />
+        <activity android:name=".ComentarioGeralActivity" />
         <activity android:name=".ComentarioPessoalActivity" />
         <activity android:name=".PostarDuvidaActivity" />
         <activity android:name=".DuvidasPessoaisActivity" />
