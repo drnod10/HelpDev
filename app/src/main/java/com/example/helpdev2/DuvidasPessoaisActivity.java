@@ -90,7 +90,6 @@ public class DuvidasPessoaisActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-
                     Integer cd = codigo;
                     Integer id = c.getCodigo();
                     String nome = c.getNome();
@@ -108,7 +107,6 @@ public class DuvidasPessoaisActivity extends AppCompatActivity {
                     startActivity(it);
                 }
             });
-
 
         }catch (Exception e) {
             System.out.println(e.toString());
