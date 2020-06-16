@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         edlogin = findViewById(R.id.edlogin);
         edsenha = findViewById(R.id.edsenha);
 
-
         try{
 
             db = openOrCreateDatabase("banco_dados",
@@ -65,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
                     "autoincrement, nome_comentador text not null, coment text " +
                     "not null, id_user_postagem integer not null)");
             System.out.println("Tabela de Comentários Criada!");
+
+            db.execSQL("insert into usuarios(nome, apelido, email, telefone,senha) values ('Administrador','admin','admin@helpdev.com','9999-8888','123')");
 
             btcadastrar.setOnClickListener(new View.OnClickListener() {
                 @Override
