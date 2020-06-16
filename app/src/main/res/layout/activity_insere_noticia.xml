@@ -22,9 +22,9 @@
 
     <EditText
         android:id="@+id/escrevanoticia"
-        android:layout_width="369dp"
-        android:layout_height="243dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="348dp"
+        android:layout_height="129dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:inputType="textMultiLine"
         android:textColor="#090909"
@@ -60,9 +60,9 @@
 
     <EditText
         android:id="@+id/escrevatitulonoticia"
-        android:layout_width="335dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="339dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textColor="#070707"
@@ -86,11 +86,11 @@
         android:id="@+id/textView38"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="48dp"
         android:text="Texto"
         android:textColor="#0B0A0A"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/escrevatitulonoticia" />
 </androidx.constraintlayout.widget.ConstraintLayout>

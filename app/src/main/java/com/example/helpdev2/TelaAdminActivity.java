@@ -2,27 +2,38 @@ package com.example.helpdev2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
 public class TelaAdminActivity extends AppCompatActivity {
 
-    ImageView btnoticias,btcodigo,btperfil,btsair,btinserir;
+    ImageView noticias,codigo,perfil,sair,inserir;
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_inicial);
+        setContentView(R.layout.activity_tela_admin_acvitivty);
 
-        btnoticias = findViewById(R.id.imageView6);
-        btcodigo = findViewById(R.id.imageView7);
-        btperfil = findViewById(R.id.imageView8);
-        btsair = findViewById(R.id.imageView11);
-        btinserir = findViewById(R.id.imageView10);
+        noticias = findViewById(R.id.imageView6);
+        codigo = findViewById(R.id.imageView7);
+        perfil = findViewById(R.id.imageView8);
+        sair = findViewById(R.id.imageView11);
+        inserir = findViewById(R.id.imageView10);
 
-        btnoticias.setOnClickListener(new View.OnClickListener() {
+        db = openOrCreateDatabase("banco_dados",
+                Context.MODE_PRIVATE, null);
+        db.execSQL("create table if not exists " +
+                "noticias(id integer primary key " +
+                "autoincrement, titulo text not null, texto text " +
+                "not null)");
+        System.out.println("Banco de Dados Criado com Sucesso!");
+
+        noticias.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TelaAdminActivity.this, NoticiasActivity.class);
@@ -30,7 +41,7 @@ public class TelaAdminActivity extends AppCompatActivity {
             }
         });
 
-        btcodigo.setOnClickListener(new View.OnClickListener() {
+        codigo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Cliente c = getIntent().getExtras().getParcelable("cliente");
@@ -52,7 +63,7 @@ public class TelaAdminActivity extends AppCompatActivity {
             }
         });
 
-        btperfil.setOnClickListener(new View.OnClickListener() {
+        perfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -75,14 +86,14 @@ public class TelaAdminActivity extends AppCompatActivity {
             }
         });
 
-        btsair.setOnClickListener(new View.OnClickListener() {
+        sair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
 
-        btinserir.setOnClickListener(new View.OnClickListener() {
+        inserir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(TelaAdminActivity.this, InsereNoticiaActivity.class);

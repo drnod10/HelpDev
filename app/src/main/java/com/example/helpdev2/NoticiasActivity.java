@@ -35,7 +35,7 @@ public class NoticiasActivity extends AppCompatActivity {
         db.execSQL("create table if not exists " +
                 "noticias(id integer primary key " +
                 "autoincrement, titulo text not null, texto text " +
-                "not null, " + "comentarios text not null)");
+                "not null)");
         System.out.println("Banco de Dados Criado com Sucesso!");
 
         final Cursor res = db.rawQuery("select titulo,texto from noticias", null);
@@ -90,8 +90,6 @@ public class NoticiasActivity extends AppCompatActivity {
             } catch (Exception e) {
                 System.out.println(e.toString());
             }
-
-
             }
     }
 
