@@ -44,13 +44,35 @@ public class CadastroActivity extends AppCompatActivity {
                 String email = edemail.getText().toString();
                 String senha = edsenha.getText().toString();
                 String telefone = edtelefone.getText().toString();
+                String senha2 = edsenha2.getText().toString();
                 try {
-                    db.execSQL("insert into usuarios(nome, apelido, email, telefone,senha) values ('"+nome+"','"+apelido+"','"+email+"','"+telefone+"','"+senha+"')");
-                    AlertDialog.Builder dialogo = new AlertDialog.Builder(CadastroActivity.this);
-                    dialogo.setTitle("Aviso");
-                    dialogo.setMessage("Usuario Cadastrado com Sucesso !")
-                            .setNeutralButton("OK",null)
-                            .show();
+                    if ( senha.equals(senha2) ) {
+                        if (!nome.equals("") && !apelido.equals("") && !email.equals("") && !senha.equals("") && !telefone.equals("") && !senha2.equals("")) {
+                            db.execSQL("insert into usuarios(nome, apelido, email, telefone,senha) values ('" + nome + "','" + apelido + "','" + email + "','" + telefone + "','" + senha + "')");
+                            AlertDialog.Builder dialogo = new AlertDialog.Builder(CadastroActivity.this);
+                            dialogo.setTitle("Aviso");
+                            dialogo.setMessage("Usuario Cadastrado com Sucesso !")
+                                    .setNeutralButton("OK", null)
+                                    .show();
+                        }
+                        else{
+                            AlertDialog.Builder dialogo = new AlertDialog.Builder(CadastroActivity.this);
+                            dialogo.setTitle("Aviso");
+                            dialogo.setMessage("Preencha os Campos para cadastrar !")
+                                    .setNeutralButton("OK", null)
+                                    .show();
+
+                        }
+
+                    }else {
+                        AlertDialog.Builder dialogo = new AlertDialog.Builder(CadastroActivity.this);
+                        dialogo.setTitle("ERRO");
+                        dialogo.setMessage("Senhas Diferentes digite novamente !")
+                                .setNeutralButton("OK", null)
+                                .show();
+
+                    }
+
                 } catch (Exception e) {
                     System.out.println("Erro ao Cadastrar Dados!");
                 }
